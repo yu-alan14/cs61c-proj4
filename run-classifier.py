@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     # Print debugging output if using sample dataset
     if (sys.argv[1] == "sample"):
-        f = open('your_debug_output.txt', 'w')
+        f = open('staff_debug_output.txt', 'w')
         f.write("NUM_REVIEWS dictionary:\n")
         f.write(str(classifier.NUM_REVIEWS))
         f.write("\n\nNUM_WORDS dictionary:\n")
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         f.write("\n\nLIKELIHOODS dictionary:\n")
         f.write(str(classifier.LIKELIHOODS))
         f.write("\n\nCLASSIFIER OUTPUT:\n")
-        f.write(("PREDICTED RESULT (review_id, predicted_label total_log_likelihood:"
+        f.write(("PREDICTED RESULT (review_id, predicted_label, total_log_likelihood):"
             "\t\tACTUAL RESULT (review_id, actual_label):\n"))
 
     # summarize results

@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     # Print debugging output if using sample dataset
     if (sys.argv[1] == "sample"):
-        f = open('staff_debug_output.txt', 'w')
+        f = open('your_debug_output.txt', 'w')
         f.write("NUM_REVIEWS dictionary:\n")
         f.write(str(classifier.NUM_REVIEWS))
         f.write("\n\nNUM_WORDS dictionary:\n")

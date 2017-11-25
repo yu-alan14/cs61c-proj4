@@ -63,8 +63,8 @@ class YelpClassifier(object):
     # Calculate number of reviews per number of stars
     def calculate_num_reviews_and_words_per_num_stars(self, train_rdd):
         # Transformations:
-        # 1. (review_id, num_stars, review_text_as_string) --> [(num_stars, 1)]
-        # 2. [(num_stars, 1)] --> [(num_stars, num_reviews_of_num_stars)]
+        # 1. (review_id, num_stars, review_text_as_string) --> [(num_stars, (1, num_words))]
+        # 2. [(num_stars, (1, num_words))] --> [(num_stars, (num_reviews_of_num_stars, num_words_total_of_num_stars))]
 
         raise NotImplementedError()
 
@@ -112,7 +112,6 @@ class YelpClassifier(object):
                             .map(self.likelihood_to_posterior) \
                             .map(self.review_id_only_as_key) \
                             .reduceByKey(self.find_max_posterior) \
-                            .map(self.num_stars_only_as_value) \
                             .sortByKey()
 
         return predictions
@@ -258,11 +257,3 @@ class YelpClassifier(object):
     def find_max_posterior(num_stars_posterior1, num_stars_posterior2):
         raise NotImplementedError()
 
-    ################################# 
-    #           FILL THIS IN        #
-    #################################
-    # Modifies key-value pair such that only the predicted number of stars is the
-    # value for this key-value pair.
-    @staticmethod
-    def num_stars_only_as_value(id_num_stars_posterior):
-        raise NotImplementedError()
